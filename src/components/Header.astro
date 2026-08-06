@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import marenostrumIcon from '../assets/marenostrum_icon.png';
+import githubIcon from '../assets/github_icon.png';
+
+const pathname = new URL(Astro.request.url).pathname;
+
+const navItems = [
+    { href: "/", label: "Home" },
+    { href: "/services", label: "Services"},
+    { href: "/team", label: "Our Team"},
+    { href: "/contact", label: "Contact" }
+];
+---
+
+<nav id="main-nav" class="relative bg-surface-primary border-b border-slate-200 transition-colors duration-200">
+    <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div class="flex items-center space-x-3">
+            <a href="https://mare.id.uj.edu.pl/" target="_blank">
+                <Image src={marenostrumIcon} alt="Mare Nostrum Lab" width="128"/>
+            </a>
+            <a href="#" target="_blank">
+                <Image src={githubIcon} alt="GitHub" width="32" height="32"/>
+            </a>
+        </div>
+        <button type="button" id="menu-toggle-button" class="inline-flex items-center p-2 w-10 h-10 justify-center lg:hidden text-text-primary aria-expanded:text-primary transition-colors" aria-controls="navbar-default" aria-expanded="false">
+            <span class="sr-only">Open content menu</span>
+            <svg width="64" height="64" viewBox="0 -5 32 32" xmlns="http://www.w3.org/2000/svg"><title>Content Menu</title><path d="M30 18a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4z" fill="currentColor"/></svg>
+        </button>
+        
+        <div id="navbar-default" class="hidden absolute bg-surface-primary top-full left-0 right-0 w-full z-10 border-b border-slate-200 shadow-sm lg:static lg:block lg:w-auto lg:shadow-none lg:p-0 lg:border-0">
+            <ul class="w-full text-center font-medium flex flex-col lg:flex-row lg:p-0 lg:space-x-8 lg:bg-transparent lg:mt-0">
+                {
+                    navItems.map(item => {
+                        const isActive = pathname === item.href;
+                        return (
+                            <li>
+                            <a 
+                                href={item.href}
+                                aria-current={isActive ? "page" : undefined}
+                                class:list={[
+                                "block py-3 lg:py-2 rounded transition-colors duration-200 lg:p-0",
+                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                                "hover:text-primary-hover hover:bg-surface-muted lg:hover:bg-transparent",
+                                isActive 
+                                ? "text-primary font-bold bg-primary/5 lg:bg-transparent" 
+                                : "text-text-primary"
+                            ]}
+                            >
+                            {item.label}
+                            </a>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const mainNav = document.getElementById('main-nav');
+    const menuToggleButton = document.getElementById('menu-toggle-button');
+    const navbarDefault = document.getElementById('navbar-default');
+    
+    menuToggleButton?.addEventListener('click', () => {
+        const isExpanded = menuToggleButton.getAttribute('aria-expanded') === 'true';
+        menuToggleButton.setAttribute('aria-expanded', String(!isExpanded));
+        
+        navbarDefault?.classList.toggle('hidden');
+        
+        mainNav?.classList.toggle('border-slate-200');
+        mainNav?.classList.toggle('border-transparent');
+    });
+</script>
