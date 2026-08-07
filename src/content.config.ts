@@ -18,6 +18,20 @@ const team = defineCollection({
     })
 });
 
+const services = defineCollection({
+    loader: glob({
+        base: './src/data/services',
+        pattern: '**/*.{yaml,yml}'
+    }),
+    schema: ({ image }) => z.object({
+        name: z.string(),
+        description: z.string(),
+        link: z.url(),
+        icon: image()
+    })
+})
+
 export const collections = {
-    team
+    team,
+    services
 };

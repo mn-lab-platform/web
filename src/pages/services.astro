@@ -1,7 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CardGrid from '../components/CardGrid.astro';
+
+const services = await getCollection('services');
 ---
 
-<BaseLayout title="Mare Nostrum Services" description="Our services at Mare Nostrum Lab" >
-    
+<BaseLayout title="Our Services" description="Our services at Mare Nostrum Platform" >
+    <CardGrid title="Our Services">
+        {services.map((service: CollectionEntry<'services'>) => (
+            <div class="w-full max-w-sm mx-auto">
+                
+            </div>
+            )
+        )}
+    </CardGrid>
 </BaseLayout>
