@@ -1,0 +1,9 @@
+name: Chicken Joe
+role: Surfer
+university: PW
+expertise:
+  - Cody
+  - Surfing
+  - Computer Vision
+email: chicken.joe@example.com
+avatar: ../../assets/avatars/chickenjoe.png

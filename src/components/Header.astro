@@ -1,9 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import marenostrumIcon from '../assets/marenostrum_icon.png';
-import githubIcon from '../assets/github_icon.png';
+import marenostrumLogo from '../assets/logotypes/marenostrum-blue-logo.png';
 
 const pathname = new URL(Astro.request.url).pathname;
+const normalizePath = (path: string) => (path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path);
+const currentPath = normalizePath(pathname);
 
 const navItems = [
     { href: "/", label: "Home" },
@@ -12,49 +13,56 @@ const navItems = [
 ];
 ---
 
-<nav id="main-nav" class="relative bg-surface-primary border-b border-slate-200 transition-colors duration-200">
-    <div class="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <div class="flex items-center space-x-3">
-            <a href="https://mare.id.uj.edu.pl/" target="_blank">
-                <Image src={marenostrumIcon} alt="Mare Nostrum Lab" width="128"/>
+<nav id="main-nav" class="sticky top-0 bg-surface-primary border-b border-slate-200">
+
+    <div class="max-w-screen-2xl mx-auto px-4">
+        <div class="flex flex-wrap items-center justify-between py-4">
+            <a href="/">
+                <Image src={marenostrumLogo} alt="Mare Nostrum Lab" width="128" loading="eager"/>
             </a>
-            <a href="#" target="_blank">
-                <Image src={githubIcon} alt="GitHub" width="32" height="32"/>
-            </a>
-        </div>
-        <button type="button" id="menu-toggle-button" class="inline-flex items-center p-2 w-10 h-10 justify-center lg:hidden text-text-primary aria-expanded:text-primary transition-colors" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open content menu</span>
-            <svg width="64" height="64" viewBox="0 -5 32 32" xmlns="http://www.w3.org/2000/svg"><title>Content Menu</title><path d="M30 18a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4z" fill="currentColor"/></svg>
-        </button>
-        
-        <div id="navbar-default" class="hidden absolute bg-surface-primary top-full left-0 right-0 w-full z-10 border-b border-slate-200 shadow-sm lg:static lg:block lg:w-auto lg:shadow-none lg:p-0 lg:border-0">
-            <ul class="w-full text-center font-medium flex flex-col lg:flex-row lg:p-0 lg:space-x-8 lg:bg-transparent lg:mt-0">
-                {
-                    navItems.map(item => {
-                        const isActive = pathname === item.href;
-                        return (
-                            <li>
-                            <a 
-                                href={item.href}
-                                aria-current={isActive ? "page" : undefined}
-                                class:list={[
-                                "block py-3 lg:py-2 rounded transition-colors duration-200 lg:p-0",
-                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                                "hover:text-primary-hover hover:bg-surface-muted lg:hover:bg-transparent",
-                                isActive 
-                                ? "text-primary font-bold bg-primary/5 lg:bg-transparent" 
-                                : "text-text-primary"
-                            ]}
-                            >
-                            {item.label}
-                            </a>
-                            </li>
-                        )
-                    })
-                }
-            </ul>
+            
+            <div class="flex items-center gap-2 md:gap-0">
+                <button type="button" id="menu-toggle-button" class="inline-flex items-center p-2 w-10 h-10 justify-center md:hidden text-text-primary aria-expanded:text-primary transition-colors" aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open content menu</span>
+                    <svg aria-hidden="true" width="64" height="64" viewBox="0 -5 32 32" xmlns="http://www.w3.org/2000/svg"><title>Content Menu</title><path d="M30 18a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4z" fill="currentColor"/></svg>
+                </button>
+                <div id="navbar-default" class="hidden absolute bg-surface-primary top-full left-0 right-0 w-full z-10 border-b border-slate-200 shadow-sm md:static md:block md:w-auto md:shadow-none md:p-0 md:border-0">
+                    <ul class="w-full text-center font-medium flex flex-col md:flex-row md:p-0 md:space-x-8 md:bg-transparent md:mt-0">
+                        {
+                            navItems.map(item => {
+                                const isActive = currentPath === item.href;
+                                return (
+                                    <li>
+                                    <a 
+                                        href={item.href}
+                                        aria-current={isActive ? "page" : undefined}
+                                        class:list={[
+                                    "block py-3 md:py-2 rounded transition-colors duration-200 md:p-0",
+                                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                                    "hover:text-primary-hover hover:bg-surface-muted md:hover:bg-transparent",
+                                    isActive 
+                                    ? "text-primary font-bold bg-primary/5 md:bg-transparent" 
+                                    : "text-text-primary"
+                                ]}
+                                >
+                                {item.label}
+                                </a>
+                                </li>
+                            )
+                        })
+                        }
+                    </ul>
+                </div>
+
+                <a href="https://github.com/Mare-Nostrum-Lab-UJ" aria-label="GitHub" target="_blank" rel="noopener noreferrer" class="flex items-center px-2 border-slate-300 text-text-muted md:border-l-2 md:ml-4 md:pl-4 md:px-0 hover:text-primary-hover transition-colors">
+                    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"></path>
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
+
 </nav>
 
 <script>
