@@ -10,37 +10,36 @@ const teamMembers = await getCollection('team');
 
 <BaseLayout title="Meet the Team" description="The team behind Mare Nostrum Platform">
     <CardGrid title="Our Team">
-            {teamMembers.map((member: CollectionEntry<'team'>) => (
-                <div class="w-full max-w-sm mx-auto">
-                    <header class="flex gap-3 min-w-0">
-                        <Image src={member.data.avatar} alt={member.data.name} width="64" height="64" class="rounded-full shrink-0 object-cover" loading="eager"/>
-                        <div class="  min-w-0 flex-1">
-                            <h3 class="text-xl font-semibold">{member.data.name}</h3>  
-                            <p class="text-primary text-sm">{member.data.role}</p>
-                        
-                            <a href={`mailto:${member.data.email}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-primary-hover transition-colors">
-                                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                                </svg>
-                                <span class="truncate text-sm">{member.data.email}</span>
-                            </a>
-                        </div>
-                    </header>
-                    <div class="mt-4 flex flex-col w-full">
-                        <ul class="flex flex-wrap gap-2">
-                            <li class="bg-primary text-white border border-transparent text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
-                                {member.data.university}
-                            </li>
-                            {member.data.expertise.map((skill: string) => (
-                                <li class="text-primary border border-blue-200 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
-                                    {skill}
-                                </li>
-                            ))}
-                        </ul>
+        {teamMembers.map((member: CollectionEntry<'team'>) => (
+            <article class="w-full max-w-sm mx-auto">
+                <header class="flex gap-3 min-w-0">
+                    <Image src={member.data.avatar} alt={member.data.name} width="64" height="64" class="rounded-full shrink-0 object-cover" loading="eager"/>
+                    <div class="min-w-0 flex-1">
+                        <h3 class="text-xl font-semibold">{member.data.name}</h3>  
+                        <p class="text-primary text-sm">{member.data.role}</p>
+                    
+                        <a href={`mailto:${member.data.email}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 hover:text-primary-hover transition-colors">
+                            <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                            <span class="truncate text-sm">{member.data.email}</span>
+                        </a>
                     </div>
+                </header>
+                <div class="mt-4 flex flex-col w-full">
+                    <ul class="flex flex-wrap gap-2">
+                        <li class="bg-primary/80 text-white border border-transparent text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
+                            {member.data.university}
+                        </li>
+                        {member.data.expertise.map((skill: string) => (
+                            <li class="text-primary border border-blue-200 text-xs font-semibold px-3 py-1 rounded-full shadow-sm">
+                                {skill}
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-                )
-            )}
+            </article>
+        ))}
     </CardGrid>
 </BaseLayout>
