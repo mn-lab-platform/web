@@ -14,7 +14,8 @@ const team = defineCollection({
         university: z.enum(["JU", "WUT"]),
         expertise: z.array(z.string()).max(5, 'Expertise can have a maximum of 5 items.').min(1, 'Expertise must have at least 1 item.'),
         email: z.email().optional(),
-        avatar: image()
+        avatar: image(),
+        sort: z.number().optional().default(10)
     })
 });
 
@@ -26,9 +27,9 @@ const services = defineCollection({
     schema: ({ image }) => z.object({
         name: z.string(),
         description: z.string(),
-        repo: z.string().optional(),
         url: z.url(),
-        icon: image()
+        icon: image(),
+        sort: z.number().optional().default(10)
     })
 })
 
