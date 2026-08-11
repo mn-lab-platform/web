@@ -1,8 +1,49 @@
 ---
+import archesLandingImage from '../assets/page-arches-img/arches-landing.png';
+import archesModelsImage from '../assets/page-arches-img/arches-models.png';
+import archesWorkflowsImage from '../assets/page-arches-img/arches-workflows.png';
+import archesMapImage from '../assets/page-arches-img/arches-map.png';
+
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import TextImageRow from '../components/TextImageRow.astro';
 ---
 
 <BaseLayout title="Arches for Excavation" 
     description="Arches for Excavation is a comprehensive, all-in-one environment tailored specifically for the realities of archaeological fieldwork. Built upon the powerful Arches Project framework, it acts as a central hub pre-configured with specialized data models, integrated mapping, and intuitive upload workflows ensuring that complex field data entry is as seamless and effortless as possible from day one.">
+    
+    <section class="w-full max-w-screen-2xl mx-auto px-10 py-6">
+        <PageHeading title="Arches for Excavation" />
 
+        <div class="flex flex-col gap-25 mt-12">
+            
+            <TextImageRow 
+                textTitle="A Digital Foundation for Fieldwork" 
+                text="As our flagship deployment, Arches for Excavation is designed to be the digital foundation of your project, ready to be set up the moment you break ground at a new site. Built upon the powerful [Arches Project](https://archesproject.org) framework, it acts as a comprehensive, all-in-one environment tailored specifically for the realities of archaeological fieldwork. We built this core system to serve as a central hub—pre-configured with specialized data models, integrated mapping, and intuitive upload workflows—ensuring that complex field data entry is as seamless and effortless as possible from day one."
+                imageSrc={archesLandingImage}
+                loadingMode="eager"
+            />
+            
+            <TextImageRow 
+                textTitle="Ontology-Driven Data Models" 
+                text="To guarantee semantic richness and global standardization, we developed a custom archaeological data model strictly adhering to the [CIDOC CRM (v7.1)](https://cidoc-crm.org/Version/version-7.1) ontology. Rather than a generic database, the system is populated with tailored resource models reflecting real-world entities—such as Trenches, Contexts, and Special Finds—allowing researchers to accurately map physical excavations to digital archives."
+                imageSrc={archesModelsImage}
+                textFirst={false}
+            />
+
+            <TextImageRow 
+                textTitle="Intuitive Data Entry Workflows" 
+                text="Archaeological data entry shouldn't require a computer science degree. We designed a custom set of guided, step-by-step workflows to streamline the upload process. Whether you are logging a new pottery shard, importing total station data, or uploading a 3D model, these simplified forms ensure that complex data is captured consistently and effortlessly directly in the field."
+                imageSrc={archesWorkflowsImage}
+            />
+
+            <TextImageRow 
+                textTitle="Integrated Spatial Mapping" 
+                text="Advanced geospatial analysis is built directly into the workflow. Our custom map plugin allows archaeologists to draw trenches, assign local coordinate systems, and mark artifact coordinates natively on top of high-resolution aerial drone imagery. You can interact with and visualize spatial data without ever needing to switch to a separate GIS application."
+                imageSrc={archesMapImage}
+                textFirst={false}
+            />
+
+        </div>
+    </section>
 </BaseLayout>

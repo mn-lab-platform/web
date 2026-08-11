@@ -6,23 +6,23 @@ import landing4 from "../assets/page-landing-img/landing-4.png";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHeading from "../components/PageHeading.astro";
-import LandingRow from "../components/LandingRow.astro";
+import TextImageRow from "../components/TextImageRow.astro";
 import PageSubheading from "../components/PageSubheading.astro";
 ---
 
 <BaseLayout title="Mare Nostrum Platform" description="Mare Nostrum Platform is a research platform">
-    <section class="w-full max-w-screen-2xl mx-auto px-4">
+    <section class="w-full max-w-screen-2xl mx-auto px-10 py-6">
         <PageHeading title="Mare Nostrum Platform" />
 
         <div class="flex flex-col gap-25">
-            <LandingRow 
+            <TextImageRow 
                 textTitle="Bridging Technology and Heritage" 
                 text="The Mare Nostrum Platform is a collaborative initiative uniting researchers and developers from the Jagiellonian University in Kraków and the Warsaw University of Technology. Together, we are building the digital infrastructure needed to modernize archaeological research." 
                 imageSrc={landing1} 
                 loadingMode="eager"
             />
 
-            <LandingRow 
+            <TextImageRow 
                 textTitle="Extending Open Source Solutions" 
                 text="We believe in the power of open knowledge. Instead of reinventing the wheel, we customize and extend industry-standard open-source platforms—primarily [Arches](https://www.archesproject.org/), alongside [GeoNode](https://geonode.org/), [Recogito](https://recogitostudio.org/), and [Wikidata](https://www.wikidata.org/)—tailoring them specifically for the complex needs of modern excavation and cultural heritage preservation." 
                 imageSrc={landing2} 
@@ -30,13 +30,13 @@ import PageSubheading from "../components/PageSubheading.astro";
                 loadingMode="eager"
             />
 
-            <LandingRow 
+            <TextImageRow 
                 textTitle="A Multidisciplinary Synergy" 
                 text="Our strength lies in our combined expertise. The team at the Warsaw University of Technology drives the software development and systems engineering, researchers at the Jagiellonian University provide critical architectural knowledge, guide complex data modeling, and lead the specialized gathering of field data." 
                 imageSrc={landing3} 
             />
 
-            <LandingRow 
+            <TextImageRow 
                 textTitle="Empowering Archaeologists" 
                 text="From streamlining data collection in the field to enabling advanced analysis and visualization, our goal is to make archaeological workflows faster, easier, and more efficient." 
                 imageSrc={landing4} 
