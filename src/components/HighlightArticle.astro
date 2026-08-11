@@ -1,0 +1,27 @@
+---
+import { Picture } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+import { marked } from 'marked';
+import PageSubheading from './PageSubheading.astro';
+
+interface Props {
+    image: ImageMetadata;
+    title: string;
+    description: string;
+}
+
+const { image, title, description } = Astro.props;
+---
+
+<article class="w-full flex flex-col items-start text-start">
+    <div class="w-full flex items-center justify-center rounded-3xl">
+        <Picture src={image} alt={title} class="max-h-full max-w-full h-auto rounded-3xl" loading="eager"/>
+    </div>
+    <div>
+        <PageSubheading text={title} />
+        <p 
+            class="text-text-muted [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary-hover [&_a]:transition-colors" 
+            set:html={marked.parseInline(description)} 
+        />
+    </div>
+</article>

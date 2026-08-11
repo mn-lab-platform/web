@@ -1,5 +1,73 @@
 ---
+import landing1 from "../assets/page-landing-img/landing-1.png";
+import landing2 from "../assets/page-landing-img/landing-2.png";
+import landing3 from "../assets/page-landing-img/landing-3.png";
+import landing4 from "../assets/page-landing-img/landing-4.png";
+
 import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHeading from "../components/PageHeading.astro";
+import LandingRow from "../components/LandingRow.astro";
+import PageSubheading from "../components/PageSubheading.astro";
 ---
 
-<BaseLayout title="Mare Nostrum Platform" description="Mare Nostrum Platform is a research platform" />
+<BaseLayout title="Mare Nostrum Platform" description="Mare Nostrum Platform is a research platform">
+    <section class="w-full max-w-screen-2xl mx-auto px-4">
+        <PageHeading title="Mare Nostrum Platform" />
+
+        <div class="flex flex-col gap-25">
+            <LandingRow 
+                textTitle="Bridging Technology and Heritage" 
+                text="The Mare Nostrum Platform is a collaborative initiative uniting researchers and developers from the Jagiellonian University in Kraków and the Warsaw University of Technology. Together, we are building the digital infrastructure needed to modernize archaeological research." 
+                imageSrc={landing1} 
+                loadingMode="eager"
+            />
+
+            <LandingRow 
+                textTitle="Extending Open Source Solutions" 
+                text="We believe in the power of open knowledge. Instead of reinventing the wheel, we customize and extend industry-standard open-source platforms—primarily [Arches](https://www.archesproject.org/), alongside [GeoNode](https://geonode.org/), [Recogito](https://recogitostudio.org/), and [Wikidata](https://www.wikidata.org/)—tailoring them specifically for the complex needs of modern excavation and cultural heritage preservation." 
+                imageSrc={landing2} 
+                textFirst={false},
+                loadingMode="eager"
+            />
+
+            <LandingRow 
+                textTitle="A Multidisciplinary Synergy" 
+                text="Our strength lies in our combined expertise. The team at the Warsaw University of Technology drives the software development and systems engineering, researchers at the Jagiellonian University provide critical architectural knowledge, guide complex data modeling, and lead the specialized gathering of field data." 
+                imageSrc={landing3} 
+            />
+
+            <LandingRow 
+                textTitle="Empowering Archaeologists" 
+                text="From streamlining data collection in the field to enabling advanced analysis and visualization, our goal is to make archaeological workflows faster, easier, and more efficient." 
+                imageSrc={landing4} 
+                textFirst={false} 
+            />
+        </div>
+
+        <div class="mt-25 text-center">
+            <PageSubheading text="Dive Deeper" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12">
+
+                <a href="/highlights" class="flex flex-col items-center justify-center p-10 rounded-3xl bg-slate-50 hover:bg-slate-100 transition-colors border border-transparent hover:border-slate-200 text-center group">
+                    <h3 class="text-2xl font-semibold mb-3 group-hover:text-slate-900 transition-colors text-text-muted">
+                        Project Highlights
+                    </h3>
+                    <p class="text-text-muted text-balance leading-relaxed">
+                        Discover the most important features we've built along the way.
+                    </p>
+                </a>
+
+                <a href="/services" class="flex flex-col items-center justify-center p-10 rounded-3xl bg-primary/5 hover:bg-primary/10 transition-colors border border-transparent hover:border-primary/20 text-center group">
+                    <h3 class="text-2xl font-semibold mb-3 group-hover:text-primary transition-colors text-text-muted">
+                        Our Services
+                    </h3>
+                    <p class="text-text-muted text-balance leading-relaxed">
+                        Explore the open-source platforms we customized for modern archaeological research.
+                    </p>
+                </a>
+
+            </div>
+        </div>
+
+    </section>
+</BaseLayout>

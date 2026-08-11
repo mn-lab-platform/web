@@ -2,18 +2,34 @@
 import { Image } from 'astro:assets';
 import marenostrumLogo from '../assets/logotypes/marenostrum-blue-logo.png';
 
+type NavItem = {
+  label: string;
+  href?: string;
+  children?: {
+    label: string;
+    href: string;
+  }[];
+};
+
 const pathname = new URL(Astro.request.url).pathname;
 const normalizePath = (path: string) => (path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path);
 const currentPath = normalizePath(pathname);
 
-const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services"},
-    { href: "/team", label: "Our Team"}
+const navItems: NavItem[] = [
+    { label: "Home", href: "/" },
+    { label: "Platform", 
+    children: [
+        { label: "Arches for Excavation", href: "/arches" },
+        { label: "Wikidata for MN", href: "/wikidata" },
+        { label: "GeoNode for MN", href: "/geonode" },
+        { label: "Recogito for MN", href: "/recogito" }
+    ]},
+    { label: "Services", href: "/services" },
+    { label: "Our Team", href: "/team" }
 ];
 ---
 
-<nav id="main-nav" class="sticky top-0 bg-surface-primary border-b border-slate-200">
+<nav id="main-nav" class="sticky z-50 top-0 bg-surface-primary border-b border-slate-200">
 
     <div class="max-w-screen-2xl mx-auto px-4">
         <div class="flex flex-wrap items-center justify-between py-4">
@@ -27,28 +43,93 @@ const navItems = [
                     <svg aria-hidden="true" width="64" height="64" viewBox="0 -5 32 32" xmlns="http://www.w3.org/2000/svg"><title>Content Menu</title><path d="M30 18a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4zm0-9a2 2 0 0 1 0 4H2a2 2 0 0 1 0-4z" fill="currentColor"/></svg>
                 </button>
                 <div id="navbar-default" class="hidden absolute bg-surface-primary top-full left-0 right-0 w-full z-10 border-b border-slate-200 shadow-sm md:static md:block md:w-auto md:shadow-none md:p-0 md:border-0">
-                    <ul class="w-full text-center font-medium flex flex-col md:flex-row md:p-0 md:space-x-8 md:bg-transparent md:mt-0">
+                    <ul class="w-full text-center font-medium flex flex-col md:flex-row md:p-0 md:space-x-8">
                         {
-                            navItems.map(item => {
-                                const isActive = currentPath === item.href;
-                                return (
-                                    <li>
-                                    <a 
-                                        href={item.href}
-                                        aria-current={isActive ? "page" : undefined}
-                                        class:list={[
-                                    "block py-3 md:py-2 rounded transition-colors duration-200 md:p-0",
-                                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
-                                    "hover:text-primary-hover hover:bg-surface-muted md:hover:bg-transparent",
-                                    isActive 
-                                    ? "text-primary font-bold bg-primary/5 md:bg-transparent" 
-                                    : "text-text-primary"
-                                ]}
-                                >
-                                {item.label}
-                                </a>
-                                </li>
-                            )
+                            navItems.map((item, index) => {
+                                const isExpandibleNavItem = !item.href && item.children && item.children.length > 0;
+                                const isActiveNavItem = isExpandibleNavItem ? item.children?.some(child => currentPath === child.href) : currentPath === item.href;
+
+                                if (isExpandibleNavItem) {
+                                    return (
+                                        <li class="relative">
+                                            <button 
+                                                type="button" 
+                                                id={`expand-nav-${index}`} 
+                                                class:list={[
+                                                    "group cursor-pointer flex items-center justify-center gap-1 w-full py-3 md:py-2", 
+                                                    isActiveNavItem ? "text-primary font-bold" : "text-text-primary"
+                                                ]} 
+                                                aria-controls={`nav-children-list-${index}`} 
+                                                aria-expanded="false"
+                                            >
+                                                <span class="w-[1em] h-[1em] block md:hidden" aria-hidden="true"></span>
+                                                
+                                                <span>{item.label}</span>
+                                                
+                                                <svg 
+                                                    class="w-[1em] h-[1em] transition-transform duration-200 group-aria-expanded:-rotate-180" 
+                                                    viewBox="0 0 48 48" 
+                                                    fill="currentColor"
+                                                    aria-hidden="true"
+                                                >
+                                                    <path d="M43 17.1 39.9 14 24 29.9 8.1 14 5 17.1 24 36z"/>
+                                                </svg>
+                                            </button>
+                                            <ul 
+                                                id={`nav-children-list-${index}`} 
+                                                class:list={[
+                                                    "hidden w-full bg-slate-50/50 py-2 border-y border-slate-100", 
+                                                    "md:absolute md:top-full md:left-1/2 md:-translate-x-1/2",
+                                                    "md:mt-1",
+                                                    "md:w-56 md:p-1.5",
+                                                    "md:bg-surface-primary md:border md:border-slate-200 md:rounded-xl md:shadow-lg md:text-left"
+                                                ]}
+                                            >
+                                                {item.children?.map((child) => {
+                                                    const isActiveChild = currentPath === child.href;
+                                                    return (
+                                                        <li>
+                                                            <a 
+                                                                href={child.href}
+                                                                aria-current={isActiveChild ? "page" : undefined}
+                                                                class:list={[
+                                                                    "block py-2 px-8 text-sm transition-colors duration-200 md:px-4 md:py-2",
+                                                                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                                                                    "hover:text-primary-hover hover:bg-slate-100 md:hover:bg-slate-50",
+                                                                    isActiveChild 
+                                                                    ? "text-primary font-bold bg-primary/5 md:bg-transparent" 
+                                                                    : "text-slate-600 md:text-text-primary" 
+                                                                ]}
+                                                            >
+                                                                {child.label}
+                                                            </a>
+                                                        </li>
+                                                    )
+                                                })}
+                                            </ul>
+                                        </li>
+                                    )
+                                } 
+                                else {
+                                    return (
+                                            <li>
+                                                <a 
+                                                    href={item.href}
+                                                    aria-current={isActiveNavItem ? "page" : undefined}
+                                                    class:list={[
+                                                        "block py-3 md:py-2 rounded transition-colors duration-200 md:p-0",
+                                                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+                                                        "hover:text-primary-hover hover:bg-surface-muted md:hover:bg-transparent",
+                                                        isActiveNavItem 
+                                                        ? "text-primary font-bold bg-primary/5 md:bg-transparent" 
+                                                        : "text-text-primary"
+                                                    ]}
+                                            >
+                                            {item.label}
+                                            </a>
+                                        </li>
+                                    )
+                                }
                         })
                         }
                     </ul>
@@ -69,6 +150,8 @@ const navItems = [
     const mainNav = document.getElementById('main-nav');
     const menuToggleButton = document.getElementById('menu-toggle-button');
     const navbarDefault = document.getElementById('navbar-default');
+    const expandNavButtons = document.querySelectorAll('[id^="expand-nav-"]');
+    const navChildrenLists = document.querySelectorAll('[id^="nav-children-list-"]');
     
     menuToggleButton?.addEventListener('click', () => {
         const isExpanded = menuToggleButton.getAttribute('aria-expanded') === 'true';
@@ -78,5 +161,15 @@ const navItems = [
         
         mainNav?.classList.toggle('border-slate-200');
         mainNav?.classList.toggle('border-transparent');
+    });
+
+    expandNavButtons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            button.setAttribute('aria-expanded', String(!isExpanded));
+            
+            const navChildrenList = navChildrenLists[index];
+            navChildrenList?.classList.toggle('hidden');
+        });
     });
 </script>

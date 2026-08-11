@@ -1,4 +1,6 @@
 ---
+import PageHeading from './PageHeading.astro';
+
 interface Props {
   title?: string;
   gridCols?: string;
@@ -10,8 +12,8 @@ const {
 } = Astro.props;
 ---
 
-<section class="flex flex-col items-center p-6 max-w-screen-2xl mx-auto w-full">
-  {title && <h2 class="text-4xl md:text-5xl mb-16 text-center">{title}</h2>}
+<section class="flex flex-col items-center py-6 px-10 max-w-screen-2xl mx-auto w-full">
+  {title && <PageHeading title={title} />}
   
   <div class={`grid gap-12 w-full justify-items-center ${gridCols}`}>
     <slot />

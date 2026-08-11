@@ -1,5 +1,5 @@
 name: Wikidata for Mare Nostrum
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 url: https://tap.mn.cenagis.edu.pl/
-icon: '../../assets/service-icons/wiki.svg'
-sort: 4
+icon: '../../assets/page-services-img/wiki.svg'
+sort: 1

@@ -24,9 +24,9 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description}>
 </head>
-<body class="flex flex-col min-h-screen bg-surface-primary text-text-primary font-sans antialiased">
+<body class="flex flex-col min-h-screen bg-surface-primary text-text-primary font-sans antialiased tracking-wide">
     <Header />
-    <main class="grow">
+    <main class="grow px-2 py-6">
         <slot />
     </main>
     <Footer />
