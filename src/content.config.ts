@@ -14,7 +14,7 @@ const team = defineCollection({
         university: z.enum(["JU", "WUT"]),
         expertise: z.array(z.string()).max(5, 'Expertise can have a maximum of 5 items.').min(1, 'Expertise must have at least 1 item.'),
         email: z.email().optional(),
-        avatar: image(),
+        avatar: image().optional(),
         sort: z.number().optional().default(10)
     })
 });
