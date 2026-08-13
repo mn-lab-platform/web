@@ -1,4 +1,4 @@
-name: Chicken Joe
+name: Chicken Notjoe
 role: Surfer
 university: WUT
 expertise:
@@ -6,5 +6,4 @@ expertise:
   - Surfing
   - Computer Vision
 email: chicken.joe@example.com
-avatar: ../../assets/avatars/chickenjoe.png
 sort: 4
