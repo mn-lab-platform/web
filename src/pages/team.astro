@@ -9,7 +9,7 @@ const teamMembers = await getCollection('team');
 teamMembers.sort((a, b) => (a.data.sort) - (b.data.sort));
 ---
 
-<BaseLayout title="Meet the Team" description="The team behind Mare Nostrum Platform">
+<BaseLayout title="Meet the Team" description="The people behind Mare Nostrum LAB Platform">
     <CardGrid title="Our Team">
         {teamMembers.map((member: CollectionEntry<'team'>) => (
             <article class="w-full max-w-sm mx-auto">
