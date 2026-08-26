@@ -1,0 +1,8 @@
+name: Team Member 1
+role: Role 1
+university: JU
+expertise:
+  - Expertise 0
+  - Expertise 1
+email: team.member.1@example.com
+sort: 1
