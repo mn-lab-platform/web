@@ -10,8 +10,8 @@ const services = await getCollection('services');
 services.sort((a, b) => (a.data.sort) - (b.data.sort));
 ---
 
-<BaseLayout title="Our Services" description="Our services at Mare Nostrum LAB Platform" >
-    <CardGrid title="Our Services">
+<BaseLayout title="Our Live Apps" description="Our live apps at Mare Nostrum LAB Platform" >
+    <CardGrid title="Our Live Apps">
         {services.map((service: CollectionEntry<'services'>) => (
             <article class="w-full max-w-xs mx-auto flex flex-col items-start gap-2 text-start transition-transform hover:-translate-y-1">
                 <div class="w-full h-32 flex items-center justify-center p-2 bg-primary/10 rounded-3xl">
