@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mn.cenagis.edu.pl/sitemap-index.xml
