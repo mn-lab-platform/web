@@ -21,7 +21,7 @@ const team = defineCollection({
 
 const services = defineCollection({
     loader: glob({
-        base: './src/data/services',
+        base: './src/data/apps',
         pattern: '**/*.{yaml,yml}'
     }),
     schema: ({ image }) => z.object({
