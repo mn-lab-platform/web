@@ -1,6 +1,7 @@
 ---
 import ujLogo from "../assets/logotypes/uj-logo.png";
 import marenostrumLogo from "../assets/logotypes/marenostrum-white-logo.png";
+import idUjLogo from "../assets/logotypes/id-uj-logo.png";
 import { Image } from "astro:assets";
 ---
 
@@ -14,12 +15,15 @@ import { Image } from "astro:assets";
                 ul. Gołębia 11, 31-007 Kraków, Poland<br />
             </address>
         </div>
-        <div class="flex flex-col justify-center items-center gap-2 md:gap-6 md:flex-row md:items-center md:justify-end">
+        <div class="flex flex-col justify-center items-center gap-4 md:gap-6 md:flex-row md:items-center md:justify-end">
+            <a href="https://www.uj.edu.pl/" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-80">
+                <Image src={ujLogo} alt="Jagiellonian University Official Website" width="254"/>
+            </a>
             <a href="https://mare.id.uj.edu.pl/" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-80">
                 <Image src={marenostrumLogo} alt="Mare Nostrum Lab Homepage" width="128"/>
             </a>
-            <a href="https://www.uj.edu.pl/" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-80">
-                <Image src={ujLogo} alt="Jagiellonian University Official Website" width="254"/>
+            <a href="https://id.uj.edu.pl/" target="_blank" rel="noopener noreferrer" class="transition-opacity hover:opacity-80">
+                <Image src={idUjLogo} alt="Jagiellonian University Excellence Initiative Homepage" width="128"/>
             </a>
         </div>
     </div>
