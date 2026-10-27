@@ -1,5 +1,5 @@
 name: Recogito for Mare Nostrum
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+description: Recogito for Mare Nostrum supports collaborative work with publications, reports and other source materials through shared annotation projects. Researchers can annotate texts and images, discuss selected passages and connect annotations with concepts from the Mare Nostrum LAB Thesaurus. It also serves as a repository of knowledge and sources referenced by records in Arches. This connection helps researchers move from an archaeological record to the publications and source materials that inform its description and interpretation.
 url: https://recogito.mn.cenagis.edu.pl/
 icon: '../../assets/page-services-img/recogito.png'
 sort: 3

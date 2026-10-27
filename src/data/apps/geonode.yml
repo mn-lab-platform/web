@@ -1,5 +1,5 @@
-name: Geonode for Mare Nostrum
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+name: GeoNode for Mare Nostrum
+description: GeoNode for Mare Nostrum provides a shared repository for spatial datasets and maps. Researchers can explore project resources and their descriptive metadata, with vocabulary fields connected to the Mare Nostrum LAB Thesaurus to support consistent descriptions and make relevant datasets easier to find. The repository supports the organisation and sharing of spatial data within research teams. Some datasets are restricted to logged-in users who belong to the relevant projects; the resources visible to each user depend on their project membership and access permissions.
 url: https://repo.mn.cenagis.edu.pl/
 icon: '../../assets/page-services-img/geonode.png'
 sort: 2

@@ -1,5 +1,5 @@
-name: Arches for MAP
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+name: Arches for MA-P - Maloutena and Agora, Nea Paphos
+description: The MA-P research environment brings together documentation from the Maloutena and Agora excavations at Nea Paphos, Cyprus, conducted by Jagiellonian University and the [University of Warsaw](https://pcma.uw.edu.pl/en/2019/02/15/nea-paphos/). Built on Arches for JU Excavations, it connects archaeological records with survey measurements, maps and digital documentation, supporting the organisation and study of excavation data within the project. Access to project records requires users to log in and have access granted by an administrator.
 url: https://map.mn.cenagis.edu.pl/
 icon: '../../assets/page-services-img/arches.svg'
 sort: 5

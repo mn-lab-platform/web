@@ -1,0 +1,5 @@
+name: Mare Nostrum LAB Thesaurus
+description: The Mare Nostrum LAB Thesaurus provides shared, controlled vocabularies for describing archaeological material across the platform. It brings together archaeological classifications and terminology, helping researchers use consistent concepts when describing excavation records, spatial datasets and source annotations. Built on Wikibase, the thesaurus draws on Wikidata as a reference resource and connects project terminology with a wider body of structured knowledge. Researchers can browse concepts and their relationships, while ready-to-use vocabularies can be exported for use in Arches. Adding new entries requires a registered account and authorisation to contribute to the thesaurus.
+url: https://thesaurus.mn.cenagis.edu.pl/wiki/
+icon: '../../assets/page-services-img/wiki.svg'
+sort: 1
