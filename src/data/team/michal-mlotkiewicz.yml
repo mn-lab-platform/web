@@ -5,9 +5,9 @@ description: Michał develops integrations connecting Recogito and GeoNode with 
 university: [WUT]
 github: https://github.com/R0118
 expertise:
-  - Knowledge Engineering
-  - Semantic Integration
   - Recogito
   - GeoNode
   - Thesaurus Tools
+  - Semantic Integration
+  - Knowledge Engineering
 sort: 7
