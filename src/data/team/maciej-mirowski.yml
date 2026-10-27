@@ -1,0 +1,14 @@
+name: Maciej Mirowski, BSc Eng.
+avatar: /src/assets/team/mirowski.jpg
+role: Imaging & Data Software Engineer
+description: Maciej develops Arches extensions for archaeological imagery and finds data. His work includes IIIF and Reflectance Transformation Imaging (RTI) viewers, IIIF image ingestion, image annotation, georeferencing of orthophotos and elevation models, and import workflows for ceramic records, helping researchers bring visual evidence and finds data into the platform.
+university: [WUT]
+github: https://github.com/judoka11
+linkedin: https://www.linkedin.com/in/maciej-mirowski-306491295/
+expertise:
+  - Arches
+  - IIIF
+  - RTI
+  - Georeferenced Imagery
+  - Data Analysis
+sort: 6

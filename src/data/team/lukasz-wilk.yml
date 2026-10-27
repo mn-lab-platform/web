@@ -1,0 +1,13 @@
+name: Łukasz Wilk, MSc Eng.
+avatar: /src/assets/team/wilk.jpg
+role: Technical Lead & Senior Software Engineer
+description: Łukasz leads the software engineering team and takes overall responsibility for the platform’s technical implementation. As the team’s senior engineer, he guides technical decisions, resolves complex problems and oversees integration across components, ensuring that the applications work together as a coherent platform.
+university: [WUT]
+github: https://github.com/lpwilk
+linkedin: https://pl.linkedin.com/in/lukaszpwilk
+expertise:
+  - Technical Leadership
+  - Software Engineering
+  - Systems Integration
+  - Problem Solving
+sort: 4

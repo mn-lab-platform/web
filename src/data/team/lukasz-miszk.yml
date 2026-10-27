@@ -1,0 +1,13 @@
+name: Łukasz Miszk, PhD
+avatar: /src/assets/team/miszk.jpg
+role: Archaeological Research Lead
+description: Łukasz leads the platform's archaeological direction, translating fieldwork needs into requirements for recording, structuring and connecting excavation data. He guides the development of archaeological data models, controlled vocabularies and ontologies, keeping the platform grounded in research practice.
+university: [JU]
+universityProfile: https://www.usosweb.uj.edu.pl/kontroler.php?_action=katalog2%2Fosoby%2FpokazOsobe&os_id=11988
+publications: https://orcid.org/0000-0002-5774-4647
+expertise:
+  - Field Archaeology
+  - Data Modelling
+  - Controlled Vocabularies
+  - Ontologies
+sort: 0

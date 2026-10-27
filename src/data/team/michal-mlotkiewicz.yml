@@ -1,0 +1,13 @@
+name: Michał Młotkiewicz
+avatar: /src/assets/team/mlotkiewicz.jpg
+role: Knowledge Engineering & Semantic Integration Engineer
+description: Michał develops integrations connecting Recogito and GeoNode with the Mare Nostrum LAB Thesaurus, enabling shared terminology across annotations and spatial datasets. His work includes thesaurus-based annotation, performance optimisation, region annotations in PDF documents and a form for adding new thesaurus entries.
+university: [WUT]
+github: https://github.com/R0118
+expertise:
+  - Knowledge Engineering
+  - Semantic Integration
+  - Recogito
+  - GeoNode
+  - Thesaurus Tools
+sort: 7

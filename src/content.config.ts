@@ -2,6 +2,9 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
+export const UniversitySchema = z.enum(["JU", "WUT", "WUST"]);
+export type University = z.infer<typeof UniversitySchema>;
+
 const team = defineCollection({
     loader: glob({
         base: './src/data/team',
@@ -11,10 +14,15 @@ const team = defineCollection({
     schema: ({ image }) => z.object({
         name: z.string(),
         role: z.string(),
-        university: z.enum(["JU", "WUT"]),
+        description: z.string(),
+        university: UniversitySchema.array(),
         expertise: z.array(z.string()).max(5, 'Expertise can have a maximum of 5 items.').min(1, 'Expertise must have at least 1 item.'),
-        email: z.email().optional(),
         avatar: image().optional(),
+        github: z.url().optional(),
+        linkedin: z.url().optional(),
+        email:z.email().optional(),
+        universityProfile: z.url().optional(),
+        publications: z.url().optional(),
         sort: z.number().optional().default(10)
     })
 });

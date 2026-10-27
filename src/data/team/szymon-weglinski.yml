@@ -1,0 +1,12 @@
+name: Szymon Węgliński
+avatar: /src/assets/team/weglinski.jpg
+role: Thesaurus Developer
+description: Szymon implements the Wikibase component of the Mare Nostrum LAB Thesaurus. He also develops plugins for displaying and exporting its vocabularies, helping researchers browse and reuse thesaurus content.
+university: [WUT]
+github: https://github.com/WissonTher
+expertise:
+  - Wikibase
+  - Thesaurus
+  - Plugin Development
+  - Vocabulary Export
+sort: 8
