@@ -20,7 +20,7 @@ const { text, imageSrc, textFirst = true, textTitle, loadingMode = 'lazy' } = As
     <div class={`flex flex-col justify-center max-w-lg ${textFirst ? 'lg:order-1 lg:ml-auto' : 'lg:order-2 lg:mr-auto'}`}>
         <PageSubheading text={textTitle} />
         <p 
-            class="text-text-muted [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary-hover [&_a]:transition-colors" 
+            class="text-text-muted [&_a]:text-primary [&_a]:underline hover:[&_a]:text-primary [&_a]:transition-colors" 
             set:html={marked.parseInline(text)} 
         />
     </div>
