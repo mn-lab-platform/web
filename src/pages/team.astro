@@ -25,7 +25,7 @@ function getUniversityDetails(uni: University) {
 ---
 
 <BaseLayout title="Meet the Team" description="The people behind Mare Nostrum LAB Platform">
-    <CardGrid title="Meet the Team" maxWidth='max-w-screen-xl'>
+    <CardGrid title="Meet the Team" gridCols="grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {teamMembers.map((member: CollectionEntry<'team'>) => (
             <article class="h-full w-full max-w-md flex flex-col mx-auto p-4 border border-slate-200 rounded-xl shadow-xs">
                 <header class="grid min-h-28 min-w-0 grid-cols-[7rem_minmax(0,1fr)] items-center gap-4">
