@@ -40,6 +40,20 @@ function getUniversityDetails(uni: University) {
                         <h3 class="text-xl font-semibold">{member.data.name}</h3>  
                         <p class="text-primary text-sm">{member.data.role}</p>
                         <div class="flex items-center gap-2 text-text-muted">
+                            {member.data.universityProfile && (
+                                <a href={member.data.universityProfile} target="_blank" rel="noopener noreferrer" aria-label={`${member.data.name} university profile`} class="transition-colors hover:text-primary">
+                                    <svg class="size-5 shrink-0" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor">
+                                        <path d="M16 6.28a1.23 1.23 0 0 0-.62-1.07l-6.74-4a1.27 1.27 0 0 0-1.28 0l-6.75 4a1.25 1.25 0 0 0 0 2.15l1.92 1.12v2.81a1.28 1.28 0 0 0 .62 1.09l4.25 2.45a1.28 1.28 0 0 0 1.24 0l4.25-2.45a1.28 1.28 0 0 0 .62-1.09V8.45l1.24-.73v2.72H16zm-3.73 5L8 13.74l-4.22-2.45V9.22l3.58 2.13a1.29 1.29 0 0 0 1.28 0l3.62-2.16zM8 10.27l-6.75-4L8 2.26l6.75 4z"/>
+                                    </svg>
+                                </a>
+                            )}
+                            {member.data.publications && (
+                                <a href={member.data.publications} target="_blank" rel="noopener noreferrer" aria-label={`${member.data.name} publications`} class="transition-colors hover:text-primary">
+                                    <svg class="size-5 shrink-0" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 2H9l-.35.15-.65.64-.65-.64L7 2H1.5l-.5.5v10l.5.5h5.29l.86.85h.7l.86-.85h5.29l.5-.5v-10zm-7 10.32-.18-.17L7 12H2V3h4.79l.74.74zM14 12H9l-.35.15-.14.13V3.7l.7-.7H14zM6 5H3v1h3zm0 4H3v1h3zM3 7h3v1H3zm10-2h-3v1h3zm-3 2h3v1h-3zm0 2h3v1h-3z"/>
+                                    </svg>
+                                </a>
+                            )}
                             {member.data.github && (
                                 <a href={member.data.github} target="_blank" rel="noopener noreferrer" aria-label={`${member.data.name} on GitHub`} class="transition-colors hover:text-primary">
                                     <svg class="size-5 shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
@@ -58,20 +72,6 @@ function getUniversityDetails(uni: University) {
                                 <a href={`mailto:${member.data.email}`} aria-label={`Email ${member.data.name}`} class="transition-colors hover:text-primary">
                                     <svg class="size-5 shrink-0" aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm3.519 0L12 11.671 18.481 6zM20 7.329l-7.341 6.424a1 1 0 0 1-1.318 0L4 7.329V18h16z"/>
-                                    </svg>
-                                </a>
-                            )}
-                            {member.data.universityProfile && (
-                                <a href={member.data.universityProfile} target="_blank" rel="noopener noreferrer" aria-label={`${member.data.name} university profile`} class="transition-colors hover:text-primary">
-                                    <svg class="size-5 shrink-0" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor">
-                                        <path d="M16 6.28a1.23 1.23 0 0 0-.62-1.07l-6.74-4a1.27 1.27 0 0 0-1.28 0l-6.75 4a1.25 1.25 0 0 0 0 2.15l1.92 1.12v2.81a1.28 1.28 0 0 0 .62 1.09l4.25 2.45a1.28 1.28 0 0 0 1.24 0l4.25-2.45a1.28 1.28 0 0 0 .62-1.09V8.45l1.24-.73v2.72H16zm-3.73 5L8 13.74l-4.22-2.45V9.22l3.58 2.13a1.29 1.29 0 0 0 1.28 0l3.62-2.16zM8 10.27l-6.75-4L8 2.26l6.75 4z"/>
-                                    </svg>
-                                </a>
-                            )}
-                            {member.data.publications && (
-                                <a href={member.data.publications} target="_blank" rel="noopener noreferrer" aria-label={`${member.data.name} publications`} class="transition-colors hover:text-primary">
-                                    <svg class="size-5 shrink-0" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5 2H9l-.35.15-.65.64-.65-.64L7 2H1.5l-.5.5v10l.5.5h5.29l.86.85h.7l.86-.85h5.29l.5-.5v-10zm-7 10.32-.18-.17L7 12H2V3h4.79l.74.74zM14 12H9l-.35.15-.14.13V3.7l.7-.7H14zM6 5H3v1h3zm0 4H3v1h3zM3 7h3v1H3zm10-2h-3v1h3zm-3 2h3v1h-3zm0 2h3v1h-3z"/>
                                     </svg>
                                 </a>
                             )}
