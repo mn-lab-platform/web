@@ -1,7 +1,7 @@
 name: Filip Szafran, BSc Eng.
 avatar: /src/assets/team/szafran.jpg
-role: Geospatial & 3D Software Engineer
-description: Filip develops Arches extensions for mapping, 3D visualisation and survey data integration. His work includes coordinate import tools, support for survey reference systems and single sign-on, helping researchers bring field measurements and spatial documentation into the platform.
+role: Geospatial & Web Software Engineer
+description: Filip develops Arches extensions for mapping and survey data integration. His work includes coordinate import tools and support for survey reference systems, helping researchers bring field measurements and spatial documentation into the platform. He also designed and built the Mare Nostrum LAB Platform website.
 university: [WUT]
 github: https://github.com/fszafran
 linkedin: https://www.linkedin.com/in/filip-szafran-808242388/
@@ -9,6 +9,6 @@ expertise:
   - Arches
   - Web Mapping
   - 3D Visualisation
+  - Web Applications
   - Survey Data
-  - SSO
 sort: 5
