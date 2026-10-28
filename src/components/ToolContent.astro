@@ -20,7 +20,7 @@ const { title, repoUrl, introHeading, introText, introAdditionalText, actions = 
 <section class="w-full max-w-screen-2xl mx-auto px-10 py-6">
     <PageHeading title={title} />
     {(introHeading || introText || introAdditionalText || actions.length > 0) && (
-      <div class="mx-auto max-w-5xl text-center px-6 lg:px-0">
+      <div class="mx-auto max-w-5xl text-center">
         {introHeading && <p class="text-xl font-medium text-primary">{introHeading}</p>}
         {introText && <p class="mt-4 text-text-muted leading-relaxed">{introText}</p>}
         {introAdditionalText && <p class="mt-4 text-text-muted leading-relaxed">{introAdditionalText}</p>}
@@ -45,7 +45,7 @@ const { title, repoUrl, introHeading, introText, introAdditionalText, actions = 
     )}
     <div class="flex flex-col mt-12">
         
-        <div class="max-w-5xl mx-auto flex flex-col gap-16 py-12 px-6 lg:px-0">
+        <div class="max-w-5xl mx-auto flex flex-col gap-16 py-12">
             <slot />
         </div>
 
