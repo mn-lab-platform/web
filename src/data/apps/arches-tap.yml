@@ -1,5 +1,5 @@
 name: Arches for TAP - Thelpousa Agora Project
-description: Arches for TAP is a project-specific implementation of Arches for JU Excavations, adapted to the documentation of the Thelpousa Agora Project. It brings archaeological records and their associated documentation into a shared research environment for the project team. The project was carried out under the auspices of the [Polish Archaeological Institute at Athens](https://paia.amu.edu.pl/) by a Polish–German–Greek team. Access to project records requires users to log in and have access granted by an administrator.
+description: Arches for TAP is a project-specific implementation of Arches for JU Excavations, adapted to the documentation of the Thelpousa Agora Project. It brings archaeological records and their associated documentation into a shared research environment for the project team. The project was carried out under the auspices of the [Polish Archaeological Institute at Athens](https://paia.amu.edu.pl/) by a Polish-German-Greek team. Access to project records requires users to log in and have access granted by an administrator.
 url: https://tap.mn.cenagis.edu.pl/
 icon: '../../assets/page-services-img/arches.svg'
 sort: 4
