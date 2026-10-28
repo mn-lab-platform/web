@@ -20,7 +20,6 @@ const team = defineCollection({
         avatar: image().optional(),
         github: z.url().optional(),
         linkedin: z.url().optional(),
-        email:z.email().optional(),
         universityProfile: z.url().optional(),
         publications: z.url().optional(),
         sort: z.number().optional().default(10)
