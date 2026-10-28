@@ -1,14 +1,129 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolContent from '../../components/ToolContent.astro';
-import TextImageRow from '../../components/TextImageRow.astro';
+import PageSubheading from '../../components/PageSubheading.astro';
+import { Picture } from "astro:assets";
+import thesaurusImage1 from '../../assets/page-thesaurus-img/image01.png';
+import thesaurusImage2 from '../../assets/page-thesaurus-img/image02.png';
+import thesaurusImage3 from '../../assets/page-thesaurus-img/image03.png';
+import thesaurusImage4 from '../../assets/page-thesaurus-img/image04.png';
+import thesaurusImage5 from '../../assets/page-thesaurus-img/image05.png';
+import thesaurusImage6 from '../../assets/page-thesaurus-img/image06.png';
 ---
 
-<BaseLayout title="Wikibase for Mare Nostrum" 
+<BaseLayout title="Mare Nostrum LAB Thesaurus" 
     description="A centralized knowledge base and structured data repository for connecting, querying, and managing digital heritage data across the Mare Nostrum LAB Platform.">
 
-    <ToolContent title="Wikibase for Mare Nostrum" repoUrl="https://github.com/mn-lab-platform/wikibase-for-mn-lab">
-    
+    <ToolContent
+        title="Mare Nostrum LAB Thesaurus"
+        repoUrl="https://github.com/mn-lab-platform/wikibase-for-mn-lab"
+        introHeading="Shared concepts for connected archaeological research."
+        introText="The Mare Nostrum LAB Thesaurus brings archaeological terminology and classifications into a shared, structured resource. It helps researchers describe excavation records, spatial datasets and source annotations using consistent concepts, with clear relationships, multilingual names and identifiers that can be reused across the platform. It also helps maintain terminological consistency across separate Arches instances used at different archaeological sites, while allowing each site to use only the subset of concepts relevant to its needs."
+        introAdditionalText="Browse the vocabularies, explore how terms relate to one another, and select the concepts your project needs."
+        actions={[
+            { label: 'Explore the Thesaurus', href: 'https://thesaurus.mn.cenagis.edu.pl/wiki' },
+            { label: 'Read the user guide', href: 'https://mn-lab-platform.github.io/mare-nostrum-thesaurus/quickstart/' }
+        ]}
+    >       
+        <section>
+            <PageSubheading text='A shared vocabulary for archaeological documentation'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>Research teams work with many kinds of terminology: pottery types, vessel forms, production places, chronological periods and the characteristics of archaeological contexts. Keeping these terms consistent helps make records easier to find, compare and interpret across a project.</p>
+                <p>The Thesaurus organises these vocabularies into thematic dictionaries. They cover pottery classification and description, provenance and chronology, stratigraphic relationships, trench and context characteristics, architectural details, and metadata for visual and textual resources.</p>
+                <p>Each entry represents a defined concept with its own identifier. Researchers can refer to the same concept across different tools, even when its name has alternative spellings or is expressed in another language. Descriptions and relationships provide the context needed to distinguish similar terms.</p>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Explore concepts in their hierarchy'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>The dictionaries are hierarchical: entries are organised under broader categories, with more specific concepts nested beneath them. Researchers can follow these relationships to understand where a term belongs and navigate from a general category to a particular type.</p>
+                <p>For sharing vocabularies, the export uses <strong class="font-semibold text-text-primary">SKOS - the Simple Knowledge Organization System</strong>, a W3C standard for representing thesauri and other controlled vocabularies on the web. It expresses concepts, their names and their broader-narrower relationships in a form that other systems can interpret.</p>
+                <Picture src={thesaurusImage1} alt="Concepts hierarchy view" class="w-full rounded-xl shadow-sm border border-slate-200" loading="eager"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Multiple languages, one concept'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>A concept can have labels, short descriptions and alternative names in several languages. The entry forms currently support English, Polish, Greek, German and French, allowing teams to develop multilingual terminology within a shared structure.</p>
+                <p>Alternative names can record synonyms, abbreviations or spelling variants without creating a separate entry for every name. The concept keeps the same identifier, helping researchers recognise that different names refer to the same thing.</p>
+                <p>This multilingual structure lets teams add translations and terminology as their work develops. The languages available in the forms describe the system's capabilities; the translations present depend on the content of each record.</p>
+                <Picture src={thesaurusImage2} alt="Multilingual terminology records" class="w-full rounded-xl shadow-sm border border-slate-200" loading="eager"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='From chronological terms to date ranges'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Chronology entries combine period names with structured date fields. Four boundaries allow contributors to express uncertainty about when a period starts and ends:</p>
+                <ul class="list-disc space-y-2 pl-6 marker:text-primary">
+                    <li>
+                        <strong class="font-semibold text-text-primary">Earliest Date:</strong> the earliest possible beginning of the period.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">Latest Start Date:</strong> the latest possible beginning of the period.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">Earliest End Date:</strong> the earliest possible end of the period.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">Latest Date:</strong> the latest possible end of the period.
+                    </li>
+                </ul>
+                <p>Together, these fields describe a range for the beginning and a range for the end, allowing uncertain transitions to be recorded without forcing a single exact date. Values can be supplied where known; not every entry has all four boundaries filled in.</p>
+                <p>For example, the <a href="https://thesaurus.mn.cenagis.edu.pl/wiki/Item:Q2030" target="_blank" rel="noopener noreferrer" class="text-primary underline">"2nd c. CE" entry</a> records an earliest date of 101 CE and a latest date of 200 CE. An application can therefore resolve the selected term to its recorded date range. For a period with uncertain boundaries, it can also retrieve the latest possible start and earliest possible end, where these have been supplied.</p>
+                <p>These date values are available to other applications through <strong class="font-semibold text-text-primary">SPARQL</strong>, alongside the concept identifier and label. Applications can use them to translate chronological vocabulary selections into date ranges for filtering, comparison or timeline displays, while retaining the original period term and any recorded boundary uncertainty.</p>
+                <Picture src={thesaurusImage6} alt="Chronological concepts carry date boundaries that other applications can retrieve and use." class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Shared concepts across the platform'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>The Thesaurus connects archaeological terminology with the tools researchers use to document and study their material. In <strong class="font-semibold text-text-primary">GeoNode</strong>, concepts can be assigned to dataset metadata. In <strong class="font-semibold text-text-primary">Recogito</strong>, they can be attached to annotations on texts and images. Selected vocabularies can also be exported for use in <strong class="font-semibold text-text-primary">Arches</strong>, supporting consistent descriptions of archaeological records.</p>
+                <p>The GeoNode and Recogito integrations retrieve concepts through the Thesaurus's SPARQL service. SPARQL is a standard query language for linked data: it allows software to request concepts and follow their relationships, rather than search only for matching words. For example, an application can request entries belonging to a particular dictionary branch, together with their identifiers and labels.</p>
+                <p>Researchers use these connections through the applications search and selection interfaces. Writing a SPARQL query is not required for everyday vocabulary selection. A separate query interface is available for users who want to explore the data directly.</p>
+                <Picture src={thesaurusImage3} alt="Shared concepts connect dataset metadata, source annotations and archaeological records." class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Browsing and export developed for research workflows'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Mare Nostrum LAB extends the underlying software with a dedicated dictionary view. Expandable lists display the hierarchy directly, so researchers can browse related entries, open a concept's record and return to the dictionary.</p>
+                <p>Checkboxes allow users to select individual entries or whole branches. Selecting a parent also selects its descendants, making it easier to assemble the vocabulary needed for a particular project.</p>
+                <p>The "Download selected as Arches format" action exports the selection as <strong class="font-semibold text-text-primary">SKOS</strong> in <strong class="font-semibold text-text-primary">RDF/XML</strong>, saved in a <code class="bg-slate-100 px-1.5 py-0.5 rounded text-sm font-mono text-slate-700">.rdf</code> file. RDF, the Resource Description Framework, represents information as identifiable resources and their relationships; RDF/XML is its XML-based file syntax. The export includes concept identifiers, English labels, available English alternative names and descriptions, and the selected hierarchy. Ancestor concepts are included automatically to retain the selection's place within the dictionary.</p>
+                <p>The file is prepared for import into Arches. Using an established vocabulary standard also provides a basis for reuse in other systems that support SKOS, subject to their import requirements.</p>
+                <Picture src={thesaurusImage4} alt="Select the concepts your project needs and export their hierarchy for use in Arches." class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Add new entries with guided forms'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Dedicated forms help contributors add records to the correct dictionary and place them within its hierarchy. Open the form for the relevant vocabulary, enter the label and description, add any alternative names or translations, and select the parent concept.</p>
+                <p>The forms are based on Cradle, adapted by Mare Nostrum LAB for the platform's dictionaries. Required fields and dictionary-specific choices guide data entry. The parent can be the dictionary's main category or an existing entry, allowing a new record to be added at the appropriate level.</p>
+                <p>The adapted forms also create the corresponding inverse relationship on the parent record, supporting navigation in both directions. This helps contributors maintain a connected vocabulary as it grows.</p>
+                <p>Browsing is available without signing in. Adding and editing content requires an account with the relevant permissions; saving through the forms also requires authorising the form tool to make changes on the contributor's behalf.</p>
+                <Picture src={thesaurusImage5} alt="Guided forms help contributors add new concepts in the right place within the hierarchy." class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
+
+        <section class="pt-6 border-t border-slate-200">
+            <PageSubheading text='Built on Wikibase, adapted for archaeology'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>
+                    The Mare Nostrum LAB Thesaurus is built on <a href="https://wikiba.se/" target="_blank" rel="noopener noreferrer" class="text-primary underline">Wikibase</a>, open-source software developed by Wikimedia Deutschland and maintained with a global community of contributors. Wikibase was created as the technical foundation of <a href="https://www.wikidata.org/" target="_blank" rel="noopener noreferrer" class="text-primary underline">Wikidata</a>, which launched in 2012 to make collaboratively maintained knowledge available as structured, multilingual data. It has since enabled research institutions, libraries, museums and other communities to build their own connected knowledge bases. 
+                </p>
+                <p>
+                    Its open-source model allows Mare Nostrum LAB to inspect, adapt and extend this technology for archaeological terminology, a familiar wiki-style environment supports collaborative editing, multilingual records and a visible history of changes. Wikidata also serves as an external reference resource for the platform's terminology.
+                </p>
+                <p>
+                    Mare Nostrum LAB builds on this foundation with archaeological dictionaries, hierarchical browsing, selection and SKOS export, guided entry forms, and integrations with research applications. Together, these features make the Thesaurus a shared terminology resource for archaeological work.
+                </p>
+            </div>
+        </section>
     </ToolContent>
     
 </BaseLayout>

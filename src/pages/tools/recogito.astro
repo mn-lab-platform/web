@@ -1,14 +1,70 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolContent from '../../components/ToolContent.astro';
-import TextImageRow from '../../components/TextImageRow.astro';
+import PageSubheading from '../../components/PageSubheading.astro';
+import { Picture } from 'astro:assets';
+import recogitoImage1 from '../../assets/page-recogito-img/image01.png';
+import recogitoImage2 from '../../assets/page-recogito-img/image02.png';
+import recogitoImage3 from '../../assets/page-recogito-img/image03.png';
+import recogitoImage4 from '../../assets/page-recogito-img/image04.png';
 ---
 
-<BaseLayout title="Recogito for Mare Nostrum" 
+<BaseLayout title="Recogito for Mare Nostrum LAB" 
     description="A web-based annotation platform for collaborative document markup and semantic enrichment of historical texts within the Mare Nostrum LAB ecosystem.">
 
-    <ToolContent title="Recogito for Mare Nostrum" repoUrl="https://github.com/mn-lab-platform/recogito-studio-for-mn-lab">
-    
+    <ToolContent 
+        title="Recogito for Mare Nostrum LAB" 
+        repoUrl="https://github.com/mn-lab-platform/recogito-studio-for-mn-lab"
+        introHeading="Connect research records with the evidence in your sources."
+        introText="Recogito for Mare Nostrum LAB brings PDF documents and digital images into a shared environment for reading, annotation and discussion. Researchers can work with excavation reports, books and scholarly articles alongside photographs, drawings, plans and other visual material, marking the passages and features relevant to their research."
+        introAdditionalText="Direct links to individual annotations help an interdisciplinary team refer to the same piece of evidence. They can be shared with colleagues or saved in other parts of the platform, including Arches, connecting archaeological records with the sources that support their description and interpretation."
+        actions={[
+            { label: 'Sign in to Recogito', href: 'https://recogito.mn.cenagis.edu.pl/en/sign-in' },
+            { label: 'Read the user guide', href: 'https://mn-lab-platform.github.io/recogito-studio/quickstart/' }
+        ]}
+    >
+        <section>
+            <PageSubheading text='A shared reading environment'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>Recogito is designed for collaborative reading and interpretation of primary source material. Researchers can move through a document or image, highlight specific passages or features, and attach comments that capture their observations in context.</p>
+                <p>Because the platform keeps the evidence and the interpretation together, a single annotation becomes a traceable reference point for later discussion, comparison and interpretation. This is especially useful for archaeological sources, where a short phrase, a marginal note, a diagram or a map detail may become central to understanding a site or a context.</p>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Annotate texts, images and plans'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Researchers can work with a variety of source materials in parallel, from digitised publications and excavation reports to photographs, drawings, plans and field sketches. The annotation tools are designed to support close reading and visual interpretation without separating the source from the discussion around it.</p>
+                <Picture src={recogitoImage1} alt="Recogito annotation environment with text and image sources" class="w-full rounded-xl shadow-sm border border-slate-200" loading="eager"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Collaborative annotation projects'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Annotation projects make it possible for teams to work on the same materials together. Researchers can add comments, compare interpretations and follow the development of a discussion without losing the connection to the original source.</p>
+                <p>Each annotation remains linked to its exact location in the document or image, which makes it easy to revisit a point of discussion and to share it with colleagues who are working on related material. The result is a collaborative record that remains grounded in the evidence.</p>
+                <Picture src={recogitoImage2} alt="Collaborative annotation workspace in Recogito" class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Connect annotations to archaeological concepts'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Annotations can be linked to controlled concepts from the Mare Nostrum LAB Thesaurus, helping researchers connect a passage or a feature to a shared vocabulary. This makes it easier to compare evidence across documents, projects and forms of analysis.</p>
+                <p>Instead of keeping terms in isolated notes, the platform helps keep them connected to a broader archaeological terminology, which supports consistent interpretation and makes it easier to reuse the same concepts elsewhere in the platform.</p>
+                <Picture src={recogitoImage3} alt="Recogito annotations linked to controlled concepts" class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='A repository of sources and knowledge'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Recogito for Mare Nostrum LAB also acts as a repository of knowledge and sources referenced by records in Arches. Researchers can move from a record in the archaeological database to the publication, report or image that informed its description and interpretation.</p>
+                <p>This connection helps bridge the gap between descriptive records and the underlying evidence. It keeps the historical and archaeological context close at hand while preserving a clear trail from interpretation back to the source material.</p>
+                <Picture src={recogitoImage4} alt="Project sources and annotations as a connected knowledge repository" class="w-full rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+            </div>
+        </section>
     </ToolContent>
 
 </BaseLayout>

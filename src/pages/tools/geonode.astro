@@ -1,14 +1,124 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolContent from '../../components/ToolContent.astro';
-import TextImageRow from '../../components/TextImageRow.astro';
+import PageSubheading from '../../components/PageSubheading.astro';
+import { Picture } from "astro:assets";
+import geonodeMapImage from '../../assets/page-geonode-img/geonode-map.png';
+import geonodeRepositoryImage from '../../assets/page-geonode-img/geonode-repository.png';
+import geonodeQgisImage from '../../assets/page-geonode-img/geonode-qgis.png';
 ---
 
-<BaseLayout title="GeoNode for Mare Nostrum" 
+<BaseLayout title="GeoNode for Mare Nostrum LAB" 
     description="An open-source geospatial platform for sharing, managing, and visualizing maps, aerial imagery, and archaeological datasets across Mare Nostrum LAB Platform.">
 
-    <ToolContent title="GeoNode for Mare Nostrum" repoUrl="https://github.com/mn-lab-platform/geonode-for-mn-lab">
-    
-    </ToolContent>
+    <ToolContent 
+        title="GeoNode for Mare Nostrum LAB" 
+        repoUrl="https://github.com/mn-lab-platform/geonode-for-mn-lab"
+        introHeading="A spatial data repository for storing, describing, exploring and sharing project data."
+        introText="GeoNode for Mare Nostrum LAB serves as the central repository for the raster and vector datasets, maps and documents produced within the project. The platform supports browser-based exploration of spatial data, structured metadata description, controlled access and interoperability with desktop GIS software."
+        introAdditionalText="In addition to the standard GeoNode functionality, the Mare Nostrum LAB deployment provides three extensions: tagging with the Mare Nostrum LAB Thesaurus, Wikidata and the World Historical Gazetteer; support for data recorded in local coordinate reference systems; and automatic detection of data formats."
+        actions={[
+            { label: 'Read the documentation', href: 'https://mn-lab-platform.github.io/geonode/about/' },
+            { label: 'Mare Nostrum LAB extensions', href: 'https://mn-lab-platform.github.io/geonode/thesauri-plugin/' }
+        ]}
+    >
+        <section>
+            <PageSubheading text='A unified catalogue of spatial resources'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>Archaeological fieldwork generates a wide range of spatial data, including orthophotos, elevation models, excavation plans, survey points and mapped features. GeoNode brings these resources together in a single searchable catalogue, alongside maps and supporting documentation.</p>
+                <p>Each resource is presented on a dedicated page containing its description, download and access options and, in the case of spatial data, a map preview. Datasets, maps and documents are maintained as distinct resource types, which preserves the information required to interpret and reuse each of them.</p>
+            </div>
+        </section>
 
+        <section>
+            <PageSubheading text='Browser-based data exploration'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Datasets can be previewed individually or combined into interactive maps, for example by overlaying an excavation plan on the orthophoto of the corresponding trench. Saved maps can be shared with other project members and explored directly in the browser, while GIS specialists continue to work with the same layers in desktop software.</p>
+                <Picture src={geonodeMapImage} alt="Project layers combined in a single interactive map." class="w-full rounded-xl shadow-sm border border-slate-200 mt-4" loading="eager"/>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Semantic description with shared vocabularies'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>Metadata document the content, origin and conditions of use of each dataset, including its title, abstract, temporal coverage, responsible parties, spatial extent and licence.</p>
+                <p>The Mare Nostrum LAB extension adds dedicated vocabulary fields to the metadata editor:</p>
+                <ul class="list-disc space-y-2 pl-6 marker:text-primary">
+                    <li>
+                        <strong class="font-semibold text-text-primary">Mare Nostrum LAB Thesaurus</strong> - the archaeological terminology developed within the project and shared with the thesaurus, Cradle and Recogito.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">External Thesauri</strong> - place references from Wikidata and the World Historical Gazetteer (WHG). Each tag refers to a uniquely identified entry, which prevents ambiguity between places with similar names.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">Data Format</strong> - the technical format of the dataset.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Support for local coordinate reference systems'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>Excavation data are frequently recorded in local site grids that are not recognised by standard GeoNode. The Mare Nostrum LAB extension reads the coordinate reference system from the dataset's projection file, registers it in GeoServer and PostGIS where necessary, and transforms vector and raster data (shapefiles and GeoTIFFs) to WGS 84 (EPSG:4326) during import. As a result, the data align correctly with other layers and basemaps in the web map.</p>
+                <p>The transformation requires a projection definition with a complete set of parameters. Data without a usable definition must be georeferenced prior to upload.</p>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Automatic format detection'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>The data format is identified during import and recorded in the Data Format field. Supported formats include GeoTIFF, Shapefile, GeoPackage, GeoJSON, KML and CSV. This ensures consistent format information across the catalogue without manual input.</p>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Interoperability with QGIS and other GIS software'/>
+            <div class="space-y-6 text-text-muted leading-relaxed">
+                <p>GeoNode publishes layers through <strong class="font-semibold text-text-primary">GeoServer</strong> using standard <strong class="font-semibold text-text-primary">OGC</strong> web services, which allows applications such as QGIS to connect to them directly:</p>
+                
+                <ul class="list-disc space-y-2 pl-6 marker:text-primary">
+                    <li>
+                        <strong class="font-semibold text-text-primary">WMS (Web Map Service)</strong> - rendered map images for visualisation.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">WFS (Web Feature Service)</strong> - vector features with their geometry and attributes.
+                    </li>
+                    <li>
+                        <strong class="font-semibold text-text-primary">WCS (Web Coverage Service)</strong> - raster data with cell values for analysis.
+                    </li>
+                </ul>
+                
+                <p>The available services depend on the data type: an orthophoto can be displayed via WMS, while excavation features can be loaded via WFS. Access permissions are applied consistently in the browser and in external software.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <Picture src={geonodeRepositoryImage} alt="GeoNode repository interface" class="w-full h-full object-cover rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+                    <Picture src={geonodeQgisImage} alt="QGIS software interface" class="w-full h-full object-cover rounded-xl shadow-sm border border-slate-200" loading="lazy"/>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Access control'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>Permissions determine who can view, download, edit or manage each resource. They can be assigned to individual users or groups, which allows work in progress to remain within the project team while selected resources are published more widely. The visibility of resources depends on user permissions and group membership; some datasets are available only to signed-in users.</p>
+            </div>
+        </section>
+
+        <section>
+            <PageSubheading text='Metadata standards and API'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>GeoNode describes resources using <strong class="font-semibold text-text-primary">ISO 19115</strong> metadata (encoded in <strong class="font-semibold text-text-primary">ISO 19139</strong> XML) and supports <strong class="font-semibold text-text-primary">INSPIRE</strong>-compliant metadata, enabling discovery and exchange with other catalogues. A <strong class="font-semibold text-text-primary">REST API</strong> provides programmatic access to the catalogue, metadata and supported management operations, such as uploading resources or updating metadata, in accordance with user permissions.</p>
+            </div>
+        </section>
+
+        <section class="pt-6 border-t border-slate-200">
+            <PageSubheading text='Built on GeoNode'/>
+            <div class="space-y-4 text-text-muted leading-relaxed">
+                <p>
+                    GeoNode for Mare Nostrum LAB builds on <a href="https://geonode.org/" target="_blank" rel="noopener noreferrer" class="text-primary underline">GeoNode</a>, an open-source platform created through collaboration between the World Bank's Global Facility for Disaster Reduction and Recovery (GFDRR) and OpenGeo. Work began in 2009 to make geographical data easier to catalogue, discover, visualise and share, initially addressing needs in disaster risk management and resilience. The project subsequently grew through contributions from an international community of institutions, companies and individual developers, becoming a shared resource for many fields. This collaborative foundation makes our archaeological adaptations possible: open source lets the Mare Nostrum LAB deployment extend it with functionality specific to archaeological research: shared vocabularies and place references, support for local coordinate reference systems and automatic format metadata.
+                </p>
+            </div>
+        </section>
+
+    </ToolContent>
 </BaseLayout>

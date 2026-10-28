@@ -5,17 +5,49 @@ import GithubCard from '../components/GithubCard.astro';
 interface Props {
     title: string;
     repoUrl: string;
+    introHeading?: string;
+    introText?: string;
+    introAdditionalText?: string;
+    actions?: Array<{
+        label: string;
+        href: string;
+    }>;
 }
 
-const { title, repoUrl } = Astro.props;
+const { title, repoUrl, introHeading, introText, introAdditionalText, actions = [] } = Astro.props;
 ---
 
 <section class="w-full max-w-screen-2xl mx-auto px-10 py-6">
     <PageHeading title={title} />
-
-    <div class="flex flex-col gap-25 mt-12">
+    {(introHeading || introText || introAdditionalText || actions.length > 0) && (
+      <div class="mx-auto max-w-5xl text-center px-6 lg:px-0">
+        {introHeading && <p class="text-xl font-medium text-primary">{introHeading}</p>}
+        {introText && <p class="mt-4 text-text-muted leading-relaxed">{introText}</p>}
+        {introAdditionalText && <p class="mt-4 text-text-muted leading-relaxed">{introAdditionalText}</p>}
+        {actions.length > 0 && (
+            <div class={actions.length === 1 ? 'mt-8 max-w-lg mx-auto' : 'mt-8 grid grid-cols-1 md:grid-cols-2 gap-4'}>
+                {actions.map((action) => (
+                <a
+                    href={action.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group w-full border border-slate-200 rounded-xl text-sm font-semibold text-text-muted flex justify-between items-center px-6 py-4 transition-colors duration-200 hover:text-primary hover:bg-slate-50"
+                >
+                        {action.label}
+                        <svg aria-hidden="true" fill="currentColor" class="w-4 h-4 text-slate-400 transition-all duration-200 ease-out group-hover:translate-x-1 group-hover:text-primary" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414"/>
+                        </svg>
+                    </a>
+                ))}
+            </div>
+        )}
+      </div>
+    )}
+    <div class="flex flex-col mt-12">
         
-        <slot />
+        <div class="max-w-5xl mx-auto flex flex-col gap-16 py-12 px-6 lg:px-0">
+            <slot />
+        </div>
 
         <GithubCard repoUrl={repoUrl}/>
 
